@@ -1,0 +1,37 @@
+Explanation Of How Getting The Random Numbers Work
+
+Using this line as my example:
+int Months = (int)(Math.random() * 12);
+
+This Java expression gives a random integer between 0 (inclusive) and 12 (exclusive),
+which results in a value whole number value from 0 to 11. 
+
+It does this by generating a random double, 0.0 <= x < 1.0 (via Math.random(), 
+becuase this static method generates a random double between 0.0[Included] and 1.0[Not Included]), 
+multiplying by 12 which sets the range of possible outputted results, and removing the decimal through integer casting, 
+which is what the (int) does at the beginning.
+
+- Range: The possible out come for the expression are: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 and 11.
+
+- Removing The Decimal: (int) removes the decimal, making 4.32 -> 4 and 11.999 -> 11. 
+This is why the expression does not go all the way up to 12, becuase it removes the decimal, instead of rounding.
+
+- Note: If using the integer casting (int), this will always result in a list of numbers from 0 to 
+1 less than the number its being multipled by, which in this case, since its being multipled by 12 and 12-1=11, is 0-11.
+
+- Note[Continued]: If you want the list of numbers to be in this case 1-12, you would need to make this addition:
+int Months = (int)(Math.random() * 12) + 1;
+
+- Examples:
+
+  Example 1: int Months = (int)(Math.random() * 12);
+  1. Math.random() generates a random double -> (0 <= x < 1.0) -> 0.36. (int)(0.36 * 12);
+  2. Multiply by 12 -> 0.36 * 12 = 4.32. (int)(4.32);
+  3. Remove the decimal -> 4.32 Becomes 4.
+  4. int Months = 4;
+  
+  Example 2: int Months = (int)(Math.random() * 12) ;
+  1. Math.random() generates a random double -> (0 <= x < 1.0) -> 0.999. (int)(0.999 * 12);
+  2. Multiply by 12 -> 0.999 * 12 = 11.988. (int)(11.988);
+  3. Remove the decimal -> 11.988 Becomes 11.
+  4. int Months = 11;
